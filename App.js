@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { StyleSheet, Text, View, Image } from "react-native"
+import { Navigator } from "react-native-deprecated-custom-components"
 import TabNavigator from "react-native-tab-navigator"
+import Boy from "./src/component/boy-girl/Boy.js"
 
 export default class App extends Component {
   constructor () {
@@ -12,7 +14,16 @@ export default class App extends Component {
   render () {
     return (
       <View style={ styles.container }>
-        <TabNavigator>
+        <Navigator
+          initialRoute={{
+            component: Boy
+          }}
+          renderScene={ (route, navigator) => {
+            let Component = route.component
+            return <Component navigator={ navigator } { ...route.params } />
+          } }
+        />
+        {/* <TabNavigator>
           <TabNavigator.Item
             selected={ this.state.selectedTab === "tb_popular" }
             title="最热"
@@ -61,7 +72,7 @@ export default class App extends Component {
               <Text>我的</Text>
             </View>
           </TabNavigator.Item>
-        </TabNavigator>
+        </TabNavigator> */}
       </View>
     )
   }
