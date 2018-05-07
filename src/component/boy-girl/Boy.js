@@ -12,10 +12,13 @@ export default class Boy extends Component {
   }
   render () {
     return (
-      <View style={ styles.container }>
+      <View>
         <NavigationBar
           title="boy"
           statusBar={{
+            backgroundColor: "red"
+          }}
+          style={{
             backgroundColor: "red"
           }}
         />
@@ -40,10 +43,3 @@ export default class Boy extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "gray"
-  }
-})

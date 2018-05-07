@@ -1,10 +1,33 @@
 import React, { Component } from "react"
-import { StyleSheet, View, Text } from "react-native"
+import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native"
+import NavigationBar from "./NavigationBar.js"
 
 export default class Girl extends Component {
+  renderButton (image) {
+    return (
+      <TouchableOpacity
+        onPress={ () => {
+          this.props.navigator.pop()
+        } }
+      >
+        <Image style={ styles.image } source={ image } />
+      </TouchableOpacity>
+    )
+  }
   render () {
     return (
-      <View>
+      <View style={ styles.container }>
+        <NavigationBar
+          leftButton={ this.renderButton(require("../../image/ic_arrow_back_white_36pt.png")) }
+          title="girl"
+          rightButton={ this.renderButton(require("../../image/ic_star.png")) }
+          statusBar={{
+            backgroundColor: "#ee6363"
+          }}
+          style={{
+            backgroundColor: "#ee6363"
+          }}
+        />
         <Text>我是女孩</Text>
         <Text>{ this.props.word }</Text>
         <Text
@@ -20,8 +43,11 @@ export default class Girl extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: "yellow"
+    backgroundColor: "#fff"
+  },
+  image: {
+    width: 22,
+    height: 22,
+    margin: 5
   }
 })

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from "react-native"
 import { Navigator } from "react-native-deprecated-custom-components"
 import TabNavigator from "react-native-tab-navigator"
 import Boy from "./src/component/boy-girl/Boy.js"
+import ListViewTest from "./src/component/boy-girl/ListViewTest.js"
 
 export default class App extends Component {
   constructor () {
@@ -14,7 +15,7 @@ export default class App extends Component {
   render () {
     return (
       <View style={ styles.container }>
-        <Navigator
+        {/* <Navigator
           initialRoute={{
             component: Boy
           }}
@@ -22,7 +23,7 @@ export default class App extends Component {
             let Component = route.component
             return <Component navigator={ navigator } { ...route.params } />
           } }
-        />
+        /> */}
         {/* <TabNavigator>
           <TabNavigator.Item
             selected={ this.state.selectedTab === "tb_popular" }
@@ -73,6 +74,7 @@ export default class App extends Component {
             </View>
           </TabNavigator.Item>
         </TabNavigator> */}
+        <ListViewTest />
       </View>
     )
   }
