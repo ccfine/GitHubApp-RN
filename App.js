@@ -4,6 +4,7 @@ import { Navigator } from "react-native-deprecated-custom-components"
 import TabNavigator from "react-native-tab-navigator"
 import Boy from "./src/component/boy-girl/Boy.js"
 import ListViewTest from "./src/component/boy-girl/ListViewTest.js"
+import FetchTest from "./src/component/boy-girl/FetchTest.js"
 
 export default class App extends Component {
   constructor () {
@@ -74,7 +75,8 @@ export default class App extends Component {
             </View>
           </TabNavigator.Item>
         </TabNavigator> */}
-        <ListViewTest />
+        {/* <ListViewTest /> */}
+        <FetchTest />
       </View>
     )
   }

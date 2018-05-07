@@ -26,7 +26,7 @@ export default class ListViewTest extends Component {
       dataSource: ds.cloneWithRows(data),
       isLoading: true
     }
-    this._onLoad()
+    this.onLoad()
   }
   renderRow (item) {
     return (
@@ -54,7 +54,7 @@ export default class ListViewTest extends Component {
       </View>
     )
   }
-  _onLoad () {
+  onLoad () {
    setTimeout(() => {
      this.setState({
        isLoading: false
@@ -80,7 +80,7 @@ export default class ListViewTest extends Component {
           renderFooter={ () => this.renderFooter() }
           refreshControl={ <RefreshControl 
             refreshing={ this.state.isLoading }
-            onRefresh={ () => this._onLoad() }
+            onRefresh={ () => this.onLoad() }
           /> }
         />
         <Toast ref={ toast => this.toast = toast } />
