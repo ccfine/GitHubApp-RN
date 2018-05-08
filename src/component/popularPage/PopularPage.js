@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { StyleSheet, View, Text, TextInput } from "react-native"
+import { StyleSheet, View } from "react-native"
 import NavigationBar from "../navigationBar/NavigationBar.js"
 import ScrollableTabView, { ScrollableTabBar } from "react-native-scrollable-tab-view"
 import PopularTab from "../popularTab/PopularTab.js"

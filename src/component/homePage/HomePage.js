@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { StyleSheet, Text, View, Image } from "react-native"
+import { StyleSheet, View, Image } from "react-native"
 import TabNavigator from "react-native-tab-navigator"
 import PopularPage from "../popularPage/PopularPage.js"
 import TrendPage from "../trendPage/TrendPage.js"

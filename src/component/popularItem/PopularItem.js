@@ -1,15 +1,53 @@
 import React, { Component } from "react"
-import { View, Text } from "react-native"
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native"
 
 export default class PopularItem extends Component {
   render () {
     return (
-      <View>
-        <Text>{ this.props.data.full_name }</Text>
-        <Text>{ this.props.data.description }</Text>
-        <Text>{ this.props.data.owner.avatar_url }</Text>
-        <Text>{ this.props.data.stargazers_count }</Text>
-      </View>
+      <TouchableOpacity>
+        <View style={ styles.container }>
+          <Text style={ styles.title }>{ this.props.data.full_name }</Text>
+          <Text style={ styles.description }>{ this.props.data.description }</Text>
+          <View style={ styles.containerSmall }>
+            <View style={ styles.author }>
+              <Text>Author:</Text>
+              <Image source={{ uri: this.props.data.owner.avatar_url }} style={ styles.image } />
+            </View>
+            <Text>Stars:{ this.props.data.stargazers_count }</Text>
+            <Image source={ require("../../image/ic_star.png") } style={ styles.image } />
+          </View>
+        </View>
+      </TouchableOpacity>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 10,
+    borderBottom: "0.5 solid #000"
+  },
+  title: {
+    fontSize: 16,
+    marginBottom: 2,
+    color: "#212121"
+  },
+  description: {
+    fontSize: 14,
+    marginBottom: 2,
+    color: "#757575"
+  },
+  containerSmall: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  author: {
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  image: {
+    width: 22,
+    height: 22
+  }
+})

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, ListView } from "react-native"
+import { View, ListView } from "react-native"
 import PopularItem from "../popularItem/PopularItem.js"
 import http from "../../util/http.js"
 
