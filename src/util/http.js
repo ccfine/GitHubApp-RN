@@ -1,4 +1,4 @@
-export default class HttpUtils {
+export default class http {
   static get(url) {
     return new Promise((resolve, reject) => {
       fetch(url)
@@ -19,7 +19,7 @@ export default class HttpUtils {
           "Accept": "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.parse(data)
+        body: JSON.stringify(data)
       })
         .then(res => res.json())
         .then(result => {
