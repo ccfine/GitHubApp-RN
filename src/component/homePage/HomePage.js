@@ -41,8 +41,8 @@ export default class HomePage extends Component {
             selected={ this.state.selectedTab === "favorite" }
             title="收藏"
             selectedTitleStyle={{ color: "#2695ED" }}
-            renderIcon={ () => <Image source={ require("../../image/ic_polular.png") } style={ styles.image } /> }
-            renderSelectedIcon={ () => <Image source={ require("../../image/ic_polular.png") } style={[ styles.image, { tintColor: "#2695ED" } ]} /> }
+            renderIcon={ () => <Image source={ require("../../image/ic_favorite.png") } style={ styles.image } /> }
+            renderSelectedIcon={ () => <Image source={ require("../../image/ic_favorite.png") } style={[ styles.image, { tintColor: "#2695ED" } ]} /> }
             onPress={ () => this.setState({ selectedTab: "favorite" }) }
           >
             <FavoritePage />
@@ -51,11 +51,11 @@ export default class HomePage extends Component {
             selected={ this.state.selectedTab === "personal" }
             title="我的"
             selectedTitleStyle={{ color: "#2695ED" }}
-            renderIcon={ () => <Image source={ require("../../image/ic_trending.png") } style={ styles.image } /> }
-            renderSelectedIcon={ () => <Image source={ require("../../image/ic_trending.png") } style={[ styles.image, { tintColor: "#2695ED" } ]} /> }
+            renderIcon={ () => <Image source={ require("../../image/ic_my.png") } style={ styles.image } /> }
+            renderSelectedIcon={ () => <Image source={ require("../../image/ic_my.png") } style={[ styles.image, { tintColor: "#2695ED" } ]} /> }
             onPress={ () => this.setState({ selectedTab: "personal" }) }
           >
-            <PersonalPage />
+            <PersonalPage { ...this.props } />
           </TabNavigator.Item>
         </TabNavigator>
       </View>

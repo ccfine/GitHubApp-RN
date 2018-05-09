@@ -18,6 +18,10 @@ export default class WelcomePage extends Component {
           }}
         />
         <ScrollableTabView
+          tabBarBackgroundColor="#2695ED"
+          tabBarInactiveTextColor="mintcream"
+          tabBarActiveTextColor="#fff"
+          tabBarUnderlineStyle={{ backgroundColor: "#e7e7e7", height: 2 }}
           renderTabBar={ () => <ScrollableTabBar /> }
         >
           <PopularTab tabLabel="ios" />

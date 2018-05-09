@@ -25,7 +25,9 @@ export default class PopularItem extends Component {
 const styles = StyleSheet.create({
   container: {
     margin: 10,
-    borderBottom: "0.5 solid #000"
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd"
   },
   title: {
     fontSize: 16,
