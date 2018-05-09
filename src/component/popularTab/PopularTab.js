@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { StyleSheet, View, ListView, RefreshControl } from "react-native"
 import PopularItem from "../popularItem/PopularItem.js"
-import http from "../../util/http.js"
+import Http from "../../util/http.js"
 
 export default class PopularTab extends Component {
   constructor () {
@@ -19,7 +19,7 @@ export default class PopularTab extends Component {
     this.setState({
       isLoading: true
     })
-    http.get("https://api.github.com/search/repositories?q=" + this.props.tabLabel + "&sort=stars")
+    Http.get("https://api.github.com/search/repositories?q=" + this.props.tabLabel + "&sort=stars")
       .then(result => {
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(result.items),
