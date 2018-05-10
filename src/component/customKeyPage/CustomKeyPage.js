@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from "react-native"
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image, Alert } from "react-native"
 import NavigationBar from "../navigationBar/NavigationBar.js"
 import CheckBox from "react-native-check-box"
 import BackButton from "../backButton/BackButton.js"
@@ -10,10 +10,12 @@ export default class FetchTest extends Component {
   constructor () {
     super()
     this.language = new Language(FLAG_LANGUAGE.flag_key)
+    this.changeValues = []
     this.state = {
       dataArray: []
     }
     this.handleSave = this.handleSave.bind(this)
+    this.handleBack = this.handleBack.bind(this)
   }
   componentDidMount () {
     this._loadData()
@@ -26,19 +28,32 @@ export default class FetchTest extends Component {
         })
       })
   }
+  handleBack () {
+    if (this.changeValues.length === 0) {
+      this.props.navigator.pop()
+      return
+    }
+    Alert.alert("提示", "要保存修改吗？", [
+      { text: "不保存", onPress: () => this.props.navigator.pop(), style: "cancel" },
+      { text: "保存", onPress: () => this.handleSave }
+    ])
+  }
   handleSave () {
+    if (this.changeValues.length === 0) {
+      this.props.navigator.pop()
+      return
+    }
+    this.language.save(this.state.dataArray)
     this.props.navigator.pop()
   }
   handleClick (data) {
     data.checked = !data.checked
-    
+    Array.updateArray(this.changeValues, data)
   }
-  renderRightButton () {
+  renderRightButton () { 
     return (
       <TouchableOpacity
-        onPress={ () => {
-          this.handleSave()
-        } }
+        onPress={ this.handleSave }
       >
         <View>
           <Text style={ styles.save }>保存</Text>
@@ -80,6 +95,7 @@ export default class FetchTest extends Component {
         style={ styles.checkBox }
         onClick={ () => this.handleClick(data) }  
         leftText={ data.name }
+        isChecked={ data.checked }
         checkedImage={ <Image 
           style={ styles.image }
           source={ require("./image/ic_check_box.png") } 
@@ -95,7 +111,7 @@ export default class FetchTest extends Component {
     return (
       <View>
         <NavigationBar
-          leftButton={ <BackButton back={ this.handleSave } /> }
+          leftButton={ <BackButton back={ this.handleBack } /> }
           title="Custom Key"
           rightButton={ this.renderRightButton() }
           statusBar={{
